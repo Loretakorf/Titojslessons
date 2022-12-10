@@ -37,6 +37,7 @@
 //     console.log(`${firstName} ${middleName ? middleName : ''} ${lastName}`)
 // }
 // getFullName('', "Jonas", "Petrikas");
+
 const modalButton = document.querySelector(".open-modal");
 const closeButton = document.querySelector(".modal-close-btn");
 const acceptButton = document.querySelector(".modal-accept-btn");
@@ -50,7 +51,7 @@ modalWindow.addEventListener('click', closeOnOverlaybyClick);
 
 function openModal() {
     modalWindow.className = "visible";
-    console.log("yes");
+    
 }
 function closeWindow() {
     modalWindow.className = "invisible";
