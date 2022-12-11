@@ -34,11 +34,15 @@ const displayLastName = document.querySelector(".last-name");
 const displayEmail = document.querySelector(".email");
 const displayComplaint = document.querySelector(".complaint");
 const displayDate = document.querySelector(".date");
+const date = new Date().toLocaleString();
 
 openModalBtn.addEventListener("click", openModal);
 modalCloseBtn.addEventListener("click", closeModal);
 
 submitBtn.addEventListener("click", submitComplaint);
+// openModalBtn.addEventListener("click", cleanupResults);
+
+cleanupResults();
 
 function openModal() {
   modal.style.display = "block";
@@ -47,6 +51,14 @@ function openModal() {
 function closeModal() {
   modal.style.display = "none";
 }
+emailInput.addEventListener("input", (event) => {
+  if (emailInput.validity.typeMismatch) {
+    emailInput.setCustomValidity("I am expecting an e-mail address!");
+    emailInput.reportValidity();
+  } else {
+    emailInput.setCustomValidity("");
+  }
+}); ///???
 
 function isInputValid() {
   const firstName = firstNameInput.value;
@@ -84,22 +96,27 @@ function submitComplaint() {
       displayError();
     }
   } else {
-       logInput();
+    logInput();
   }
 }
 function applyErrorToField(input) {
   input.style.border = "1px solid red";
 }
 function displayError() {
- 
   error.style.display = "block";
 }
- function logInput() {
+function logInput() {
   displayFirstName.textContent = firstNameInput.value;
   displayLastName.textContent = lastNameInput.value;
   displayEmail.textContent = emailInput.value;
   displayComplaint.textContent = complaintInput.value;
   const date = new Date().toLocaleString();
   displayDate.textContent = date;
- }
-
+}
+function cleanupResults() {
+  firstNameInput.textContent = "";
+  lastNameInput.textContent = "";
+  complaintInput.textContent = "";
+  emailInput.textContent = "";
+  error.style.display = "none";
+}
