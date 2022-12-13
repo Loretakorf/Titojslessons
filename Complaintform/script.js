@@ -38,12 +38,12 @@ const date = new Date().toLocaleString();
 
 openModalBtn.addEventListener("click", openModal);
 modalCloseBtn.addEventListener("click", closeModal);
-modalCloseBtn.addEventListener("click", cleanupResults);
+// modalCloseBtn.addEventListener("click", cleanupResults);
 
 submitBtn.addEventListener("click", submitComplaint);
 // openModalBtn.addEventListener("click", cleanupResults);
 
-cleanupResults();
+
 
 function openModal() {
   modal.style.display = "block";
@@ -95,9 +95,11 @@ function submitComplaint() {
     } else if (!emailInput.value) {
       applyErrorToField(emailInput);
       displayError();
-    }
+    } 
   } else {
     logInput();
+    cleanupResults();
+    closeModal();
   }
 }
 function applyErrorToField(input) {
@@ -115,14 +117,15 @@ function logInput() {
   displayDate.textContent = date;
 }
 function cleanupResults() {
-  firstNameInput.textContent = "";
-  lastNameInput.textContent = "";
-  complaintInput.textContent = "";
-  emailInput.textContent = "";
+  firstNameInput.value = "";
+  lastNameInput.value = "";
+  complaintInput.value = "";
+  emailInput.value = "";
   error.style.display = "none";
-  displayFirstName.textContent = "";
-  displayLastName.textContent = "";
-  displayEmail.textContent = "";
-  displayComplaint.textContent = "";
-  displayDate.textContent = "";
+  
+ 
+}
+function cleanError(input) {
+  input.style.border = "1px solid grey";
+  
 }
