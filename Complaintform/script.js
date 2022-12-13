@@ -72,19 +72,19 @@ function isInputValid() {
     return false;
   }
 }
+firstNameInput.textContent = firstNameInput.value;
+lastNameInput.textContent = lastNameInput.value;
+complaintInput.textContent = complaintInput.value;
+emailInput.textContent = emailInput.value;
 
 function submitComplaint() {
-  // event.preventDefault();
-
-  firstNameInput.textContent = firstNameInput.value;
-  lastNameInput.textContent = lastNameInput.value;
-  complaintInput.textContent = complaintInput.value;
-  emailInput.textContent = emailInput.value;
+  //  event.preventDefault();
 
   if (!isInputValid()) {
     if (!firstNameInput.value) {
       applyErrorToField(firstNameInput);
       displayError();
+     
     } else if (!lastNameInput.value) {
       applyErrorToField(lastNameInput);
       displayError();

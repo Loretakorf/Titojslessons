@@ -32,7 +32,11 @@ html {
    
 }
 .applyed {
-    padding: 20px;
+    gap: 10px;
+    display: flex;
+}
+.applyed p {
+    padding: 10px;
 }
 .modal {
     display: none; 
@@ -77,8 +81,6 @@ html {
 input:valid {
     border: 1px solid black;
 }
-input:invalid {
-    border: 1px solid red;
-}
+
 
 
