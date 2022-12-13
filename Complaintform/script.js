@@ -38,6 +38,7 @@ const date = new Date().toLocaleString();
 
 openModalBtn.addEventListener("click", openModal);
 modalCloseBtn.addEventListener("click", closeModal);
+modalCloseBtn.addEventListener("click", cleanupResults);
 
 submitBtn.addEventListener("click", submitComplaint);
 // openModalBtn.addEventListener("click", cleanupResults);
@@ -119,4 +120,9 @@ function cleanupResults() {
   complaintInput.textContent = "";
   emailInput.textContent = "";
   error.style.display = "none";
+  displayFirstName.textContent = "";
+  displayLastName.textContent = "";
+  displayEmail.textContent = "";
+  displayComplaint.textContent = "";
+  displayDate.textContent = "";
 }
