@@ -36,12 +36,16 @@ const displayComplaint = document.querySelector(".complaint");
 const displayDate = document.querySelector(".date");
 const date = new Date().toLocaleString();
 
+const btn = document.querySelector(".btn");
+const container = document.querySelector("#form-container");
+
 openModalBtn.addEventListener("click", openModal);
 modalCloseBtn.addEventListener("click", closeModal);
 // modalCloseBtn.addEventListener("click", cleanupResults);
 
 submitBtn.addEventListener("click", submitComplaint);
 // openModalBtn.addEventListener("click", cleanupResults);
+submitBtn.addEventListener("click", constractParagraph);
 
 
 
@@ -98,6 +102,7 @@ function submitComplaint() {
     } 
   } else {
     logInput();
+    constractParagraph();
     cleanupResults();
     closeModal();
   }
@@ -116,6 +121,40 @@ function logInput() {
   const date = new Date().toLocaleString();
   displayDate.textContent = date;
 }
+
+
+// function registerUser() {
+  
+//   const firstNameParagraph = document.createElement("p");
+//   const firstNameValue = document.createElement("span");
+  
+//   container.append(firstNameParagraph);
+
+//   firstNameParagraph.textContent = "First Name: "; //title
+//   firstNameParagraph.append(firstNameValue);
+  
+//   firstNameValue.id = "first-name"; //id
+
+//   firstNameValue.classList.add("test-class");
+//   //   firstNameValue.classList.add('error');
+//   //   firstNameValue.classList.remove('error');
+//   //add content i span
+//   firstNameValue.textContent = firstNameInput.value; //spanContent
+// }
+
+function constractParagraph(title, id, spancontent) {
+    container.append(constractParagraph('First name: ', 'first-name', firstNameInput.value));
+    container.append(constractParagraph('Last name: ', 'last-name', lastNameInput.value));
+
+    container.append(constractParagraph('Email: ', 'email', '@'));
+    container.append(constractParagraph('Complaint: ', 'complaint', complaintInput.value));
+    container.append(constractParagraph('Date of complaint:: ', 'date',  new Date().toLocaleString()));
+    
+    
+    return firstNameParagraph
+}
+
+
 function cleanupResults() {
   firstNameInput.value = "";
   lastNameInput.value = "";
@@ -125,7 +164,14 @@ function cleanupResults() {
   
  
 }
-function cleanError(input) {
-  input.style.border = "1px solid grey";
+function cleanError() {
   
+  clearErrorFromField(firstName);
+  clearErrorFromField(lastName);
+  clearErrorFromField(email);
+  clearErrorFromField(complaint);
+  
+}
+function clearErrorFromField(input) {
+input.style.border = "1px solid grey";
 }
