@@ -235,13 +235,14 @@ function logInput() {
 //   //add content i span
 //   firstNameValue.textContent = firstNameInput.value; //spanContent
 // }
-function constractParagraph(divContent, title, id, spanContent) {
+function constractParagraph (divContent, title, id, spanContent) {
     const divElem = document.createElement('div');
     const firstNameParagraph = document.createElement('p');
     const firstNameValue = document.createElement('span');
 
     container.append(divElem);
     divElem.classList.add('new-div');
+   
     divElem.style.paddingTop = '5px';
    
     divElem.append(firstNameParagraph);
@@ -260,12 +261,12 @@ function constractParagraph(divContent, title, id, spanContent) {
 
 function applyComplaint() {
     
-    container.append(constractParagraph('new-div', 'First name: ', 'first-name', firstNameInput.value));
-    container.append(constractParagraph('new-div', 'Last name: ', 'last-name', lastNameInput.value));
+    container.append(constractParagraph('new-div','First name: ', 'first-name', firstNameInput.value));
+    container.append(constractParagraph('new-div','Last name: ', 'last-name', lastNameInput.value));
 
-    container.append(constractParagraph('new-div', 'Email: ', 'email', emailInput.value,));
-    container.append(constractParagraph('new-div', 'Complaint: ', 'complaint', complaintInput.value));
-    container.append(constractParagraph('new-div', 'Date of complaint:: ', 'date',  new Date().toLocaleString()));
+    container.append(constractParagraph('new-div','Email: ', 'email', emailInput.value,));
+    container.append(constractParagraph('new-div','Complaint: ', 'complaint', complaintInput.value));
+    container.append(constractParagraph('new-div','Date of complaint:: ', 'date',  new Date().toLocaleString()));
     
     
     return firstNameParagraph
@@ -281,14 +282,14 @@ function cleanupResults() {
   
  
 }
-function cleanError() {
+// function cleanError() {
   
-  clearErrorFromField(firstName);
-  clearErrorFromField(lastName);
-  clearErrorFromField(email);
-  clearErrorFromField(complaint);
+//   clearErrorFromField(firstName);
+//   clearErrorFromField(lastName);
+//   clearErrorFromField(email);
+//   clearErrorFromField(complaint);
   
-}
-function clearErrorFromField(input) {
-input.style.border = "1px solid grey";
-}
+// }
+// function clearErrorFromField(input) {
+// input.style.border = "1px solid grey";
+// }

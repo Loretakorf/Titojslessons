@@ -1,0 +1,66 @@
+* {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    margin: 0;
+    background-color: beige;
+}
+header {
+    height: 30px;
+    background-color: blue;
+    text-align: center;
+}
+h1 {
+    
+    color: white;
+}
+main {
+    display: flex;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.sibling {
+    flex: 1;
+}
+#dropdown,
+.sibling,
+.container,
+.container2 {
+    margin: 20px;
+}
+#dropdown,
+button {
+    background-color: rgb(223, 217, 217);
+    border-radius: 10px;
+    padding: 8px;
+}
+.sibling,
+.container,
+.container2 {
+    background-color: rgb(223, 235, 245);
+    border-radius: 10px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgb(206, 225, 242);
+    padding: 10px;
+}
+.container2 {
+    display: none;
+}
+
+
+
+
+
+
