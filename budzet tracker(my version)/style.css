@@ -29,6 +29,7 @@ main {
 }
 .sibling {
     flex: 1;
+   
 }
 #dropdown,
 .sibling,
@@ -42,7 +43,7 @@ button {
     border-radius: 10px;
     padding: 8px;
 }
-.sibling,
+
 .container,
 .container2 {
     background-color: rgb(223, 235, 245);

@@ -15,29 +15,29 @@
     <main>
         <div class="wrapper">
             <select id="dropdown">
-                <option value="current" selected>Current budzet</option>
-                <option value="add">Add expense</option>
+                <option value="current">Current budzet</option>
+                <option value="add" selected>Add expense</option>
             </select>
             <div class="container">
                 <form action="" class="form-first">
-                    <label for="start">date:</label>
-                    <input type="date" id="start" name="start" value="2022-12-15" min="2022-12-15" max="2023-12-31">
+                    <label for="date">date:</label>
+                    <input type="date" id="date" name="date" value="2022-12-15" min="2022-12-15" max="2023-12-31">
         
                     <label for="amount">Spent Ammount:</label>
                     <input type="number" id="amount" name="amount"
-                    min="10" max="10000">
+                    min="10" max="10000" required>
         
                     <label for="select-expense">Expense Type:</label>
                     <select id="select-expense">
-                        <option value="groceries" selected>Groceries</option>
+                        <option value="groceries">Groceries</option>
                         <option value="utilities">Utilities</option>
                         <option value="car">Car</option>
-                        <option value="leisure">Leisure</option>
+                        <option value="leisure" selected>Leisure</option>
                         <option value="clothing">Clothing</option>
                     </select>
         
-                    <label for="textarea">Notes:</label>
-                    <textarea name="" id="" cols="10" rows="3"></textarea>
+                    <label for="notes">Notes:</label>
+                    <textarea name="notes" id="notes" cols="10" rows="3" required></textarea>
                     <button id="click-btn">Save Expense</button>
                 </form>
                
@@ -53,7 +53,7 @@
             </div>
         
         </div>
-        <div class="sibling">rrr</div>
+       <div class="sibling"></div>
     </main>
     
 <!-- 
