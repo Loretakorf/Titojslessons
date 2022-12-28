@@ -31,98 +31,105 @@
 // btn2.textContent = "O, no";
 // body.append(heading2, heading1);
 // console.log(heading1);
+const form = document.querySelector('#add-expense-form');
+const budgedOverview = document.querySelector('#budget-overview');
+const dateInput = document.querySelector('#date');
+const expenseTypeSelector = document.querySelector('#expense-type');
+const notesInput = document.querySelector('#notes');
+const spentAmmountInput = document.querySelector('#spent-ammount');
+const rightSideContainer = document.querySelector('.right-side-container');
+const currentStateSelector = document.querySelector('.current-state');
+const budgetInput = document.querySelector('#budget')
+let currentBalanceValue = 0;
+let hasChanged = false;
+form.addEventListener('submit', onFormSubmit);
 
-const selectActivity = document.querySelector("#dropdown");
-const containerFirst = document.querySelector(".container");
-const containerSecond = document.querySelector(".container2");
-const expenseBtn = document.querySelector("#click-btn");
-const dateInput = document.querySelector("#date");
-const amountInput = document.querySelector("#amount");
-const selectExpenseInput = document.querySelector("#select-expense");
-const textareaInput = document.querySelector("#notes");
-const siblingDiv = document.querySelector(".sibling");
-
-const budzetInput = document.querySelector("#budzet");
-const submitBtn = document.querySelector("#click-btn2");
-const spanBalance = document.querySelector("#balance");
-
-dateInput.textContent = new Date().toLocaleString();
-amountInput.textContent = Number(amountInput.value);
-textareaInput.textContent = textareaInput.value;
-
-
-submitBtn.addEventListener("click", submitBudzet);
-selectActivity.addEventListener("change", onChange);
-expenseBtn.addEventListener("click", logInput);
-
-function onChange() {
-  if (selectActivity.value == "current") {
-    containerFirst.style.display = "none";
-    containerSecond.style.display = "block";
-  } else if (selectActivity.value == "add") {
-    containerSecond.style.display = "none";
-    containerFirst.style.display = "block";
-  }
+function onFormSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    displayExpenseContainer(formData);
+    recalculateCurrentBalance();
 }
 
-function displayErrors() {
-  const amount = Number(amountInput.value);
-  const date = dateInput.value;
-  const selectExpense =selectExpenseInput.value;
-  const textarea = textareaInput.value;
-  if (!amount || !date || !selectExpense || !textarea) {
-    applyErrorToField();
-      return;
-  }
-  else {
-    logInput();
-  }
+function displayExpenseContainer() {
+    const container = document.createElement('div');
+    container.classList.add('expense-container');
+    const dateParagraph = constructExpenseParagraph('Date: ', dateInput.value);
+    const spentAmmountParagraph = constructExpenseParagraph('Spent Ammount: ', spentAmmountInput.value);
+    const expenseTypeParagraph = constructExpenseParagraph('Expense Type: ', expenseTypeSelector.value);
+    const notesParagraph = constructExpenseParagraph('Notes: ', notesInput.value);
+    container.append(dateParagraph, spentAmmountParagraph, expenseTypeParagraph, notesParagraph)
+    rightSideContainer.append(container);
 }
-function applyErrorToField(input) {
-    input.style.border = "1px solid red";
+
+function constructExpenseParagraph(title, value) {
+    const paragraph = document.createElement('p');
+    const span = document.createElement('span');
+    paragraph.textContent = title;
+    paragraph.append(span);
+    span.textContent = value;
+
+    return paragraph;
 }
-function saveExpense() {
-    const firstTitle = document.createElement("p");
-    const firstTitleValue = document.createElement("span");
-    siblingDiv.append(firstTitle);
-    firstTitle.textContent = "Date: "  //title
 
-    firstTitle.append(firstTitleValue);
-    firstTitleValue.id = "date"; //id
-    firstTitleValue.textContent = dateInput.value; //spanContent
-
-    return firstTitle
-   
+function recalculateCurrentBalance() {
+    const currentBalance = document.querySelector('#current-balance');
+    const startingBudget = document.querySelector('#budget').value;
+    console.log();
+    if (currentBalance.textContent && !hasChanged) {
+        hasChanged = true;
+        currentBalanceValue = +startingBudget - +spentAmmountInput.value;        
+    } else {
+        currentBalanceValue -= +spentAmmountInput.value;
+    }
+    currentBalance.textContent = currentBalanceValue;
+    if (currentBalanceValue < 0) {
+        currentBalance.style.color = 'red';
+    }
 }
-function logInput(title, id, spancontent) {
-  siblingDiv.style.backgroundColor = "rgb(223, 235, 245)";
-  siblingDiv.style.borderRadius = "10px";
-  siblingDiv.style.padding = "10px";
 
-  siblingDiv.append(saveExpense('Date: ', 'date', dateInput.value));
-  siblingDiv.append(saveExpense('Spent Ammount: ', 'amount', amountInput.value));
-  siblingDiv.append(saveExpense('Expense Type:', 'select-expense', selectExpenseInput.value));
-  siblingDiv.append(saveExpense('Notes: ', 'notes', textareaInput.value));
+currentStateSelector.addEventListener('change', onCurrentStateChange)
 
-   
+function onCurrentStateChange(event) {
+    handleDisplayOfStates(event.target.value)
 }
-function submitBudzet() {
-  const budzet = Number(budzetInput.value);
-  if(!budzet) {
-    budzetInput.style.border = "1px solid red";
-    return;
-  } else {
-    budzetAfterExpence();
-  }
-  console.log(budzet);
-}
- function budzetAfterExpence() {
-  const balance = spanBalance.value;
-  balance.textContent = Number(spanBalance.value);
-  const budzet = Number(budzetInput.value);
-  const amount = Number(amountInput.value);
-  balance = budzet - amount;
-  
-} 
 
-   
+function handleDisplayOfStates(currentState) {
+    if (currentState === 'Current budget') {
+        form.classList.add('hidden');
+        budgedOverview.classList.remove('hidden');
+    } else {
+        form.classList.remove('hidden');
+        budgedOverview.classList.add('hidden');
+    }
+}
+
+handleDisplayOfStates(currentStateSelector.value);
+
+budgedOverview.addEventListener('submit', onBudgetSubmit);
+
+function onBudgetSubmit(event) {
+    event.preventDefault();
+
+    const paragraph = createBalanceParagraph(budgetInput.value);
+    budgedOverview.append(paragraph);
+    budgetInput.setAttribute('disabled', true)
+    document.querySelector('#submit-budget').setAttribute('disabled', true)
+}
+
+function createBalanceParagraph(value) {
+    const paragraph = document.createElement('p');
+    const span = document.createElement('span');
+    paragraph.textContent = 'Current balance after expenses: ';
+    span.textContent = value;
+    span.id = 'current-balance';
+    paragraph.append(span);
+
+    return paragraph;
+}
+
+
+
+
+
+
