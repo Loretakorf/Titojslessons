@@ -1,35 +1,60 @@
 //1. Write a function which accepts an argument and returns the type. Note : There are six possible values that typeof returns: object, boolean, function, number, string, and undefined.
-function getTypeOf(value) {
+// function getTypeOf(value) {
+//   return typeof value;
+// }
+// getTypeOf("name");
+
+// getTypeOf(true);
+
+// getTypeOf(5);
+
+// getTypeOf({});
+
+// getTypeOf(undefined);
+
+// getTypeOf(Number());
+createLineSeperator(1);
+const getTypeOfValue = (value) => {
   return typeof value;
 }
-getTypeOf("name");
-
-getTypeOf(true);
-
-getTypeOf(5);
-
-getTypeOf({});
-
-getTypeOf(undefined);
-
-getTypeOf(Number());
-
+console.log(getTypeOfValue (() => {}));
 //2. Write a function that accepts a number as a parameter and check the number is prime or not. Note : A prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
-function isPrimeNumber(n) {
-  if (n === 1) {
-    return false;
-  } else if (n === 2) {
-    return true;
-  } else {
-    for (let x = 2; x < n; x++) {
-      if (n % x === 0) {
-        return false;
-      }
+// function isPrimeNumber(n) {
+//   if (n === 1) {
+//     return false;
+//   } else if (n === 2) {
+//     return true;
+//   } else {
+//     for (let x = 2; x < n; x++) {
+//       if (n % x === 0) {
+//         return false;
+//       }
+//     }
+//     return true;
+//   }
+// }
+// isPrimeNumber(9);
+createLineSeperator(2);
+
+const checkIsPrime =(n) => {
+  const testNumber = (x) => {
+    if(n === 1) {
+      return false;
     }
-    return true;
+    if(n === 2) {
+      return true;
+    }
+    if(n % x - 1 === 0) {
+      return false;
+    }
+    return checkIsPrime(n - 1);
   }
+return testNumber(n)
 }
-isPrimeNumber(9);
+console.log(checkIsPrime(11));
+
+
+
 // Write a function that will accept two strings and will convert first argument to a currency requested in second argument:
 //     a. First argument will be currency that needs to be converted. for example: '$10'
 //     b. Second argument will be currency that first argument needs to be converted to. For example: 'dollars', 'euros'
@@ -40,15 +65,33 @@ isPrimeNumber(9);
 //         i. €1 = $1.05
 //         ii. $1 = €0.95
 
+createLineSeperator(3);
+const currencySymbolMap = {
+  $: "dolars",
+  "€": "euros",
+};
+const convertCurrency = (valueToConvert, convertTo) => {
+  const currency = valueToConvert.at(0);//$
+    // valueToConvert.charAt(0)arba valueToConvert.at(1) arba [0]
+  // console.log(valueToconvert.length); // eigu reikia paskaicioti  - 1
+  const convertedSymbolToCurrency = currencySymbolMap[currency];
+  const currencyValue = valueToConvert.substring(1);
+   
+  if(convertedSymbolToCurrency  === convertTo) {
+    return valueToConvert; //$10
+  }
+  return convertTo === "dollars" ? `$${currencyValue * 1.05}` : `€${currencyValue * 0.95}`;//ternary
+  //  if(convertTo === "dollars") {
+  //   return `$${currencyValue * 1.05}`;//10.5
+  //  } 
+  //  if(convertTo === "euros") {
+  //   return `€${currencyValue * 0.95}`;
+  //  }
 
-// function convertCurrency($10, euros) {
-//   const amount = `$`+ number;
-//   const dollars =  number * 0.95;
-//   const euros = number * 1.05;
-//   return !euros ? `$${dollars}, 'euros'` : `€${euros}, 'dollars'`
-  
-// }
-// console.log(convertCurrency("$10", "euros"));
+ 
+}
+ convertCurrency("$10", "euros"); 
+console.log(convertCurrency("$10", "euros"));
 // 4. Write a function that accepts an argument that is a function and invokes it. Passed function should log in the console 'Hello'.
 function sayHello() {
   console.log("hello");
@@ -112,3 +155,10 @@ function factorial(n) {
 let n = 5;
 answer = factorial(n);
 console.log("Factorial of " + n + " : " + answer);
+
+
+
+
+function createLineSeperator(taskNum) {
+  console.log(`---------TASK ${taskNum}---------`);
+}
