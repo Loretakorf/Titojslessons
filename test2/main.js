@@ -139,26 +139,36 @@ console.log(getRandomNumber(1, 10));
 //         a. English version ( https://en.wikipedia.org/wiki/Factorial )
 //         b. Lithuanian version ( https://lt.wikipedia.org/wiki/Faktorialas )
 //     Tips: just like in math you will have to use recursive functions to calculate factorial. If you need you can read more about it in here https://www.javascripttutorial.net/javascript-recursive-function/
-function factorial(n) {
-  if (n < 0) {
-    return "number has to be positive.";
-  }
+// function factorial(n) {
+//   if (n < 0) {
+//     return "number has to be positive.";
+//   }
 
-  //base case
-  if (n == 0 || n == 1) {
-    return 1;
-    //recursive case
-  } else {
-    return n * factorial(n - 1);
-  }
-}
-let n = 5;
-answer = factorial(n);
-console.log("Factorial of " + n + " : " + answer);
-
-
-
-
+//   //base case
+//   if (n == 0 || n == 1) {
+//     return 1;
+//     //recursive case
+//   } else {
+//     return n * factorial(n - 1);
+//   }
+// }
+// let n = 5;
+// answer = factorial(n);
+// console.log("Factorial of " + n + " : " + answer);
 function createLineSeperator(taskNum) {
   console.log(`---------TASK ${taskNum}---------`);
 }
+function factorial(x) {
+  for (;x <= 1;) {
+    return 1;
+  }
+  return x * factorial(x-1);
+ }
+
+
+// function factorial(x) {
+//   if (x <= 1) return 1;
+//   return x * factorial(x-1); }
+  let x = 5;
+  result = factorial(x);
+  console.log("result is " + result);
