@@ -197,11 +197,15 @@ console.log(getRandomNumber(1, 10));
 // answer = factorial(n);
 // console.log("Factorial of " + n + " : " + answer);
 
-const factorial = (x) => {
-  for (; x <= 1; x--) {
-    return 1;
+//1*2*3*4*5=120
+const factorial = (number) => {
+  let factorial = 1;
+  for (x = 1; x <= number; x++) {
+    
+    factorial *= x;
+   
   }
-  return x * factorial(x - 1);
+ return factorial;
 }
 console.log(factorial(5));
 
