@@ -207,7 +207,7 @@ const factorial = (number) => {
   }
  return factorial;
 }
-console.log(factorial(5));
+console.log(factorial(7));
 
 // // function factorial(x) {
 // //   if (x <= 1) return 1;
