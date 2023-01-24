@@ -97,10 +97,15 @@ function reverseArray(array) {
 
 const reverseArrayInPlace = (array) => {
   let currrentIteratedValue;
-  for (let i = 0; i < array.length / 2; i++) {
+  for (let i = 0; i < Math.floor(array.length / 2); i++) {
+    //array[0] -> 1
     currrentIteratedValue = array[i];
+    //array[3-1-0] -> array[2] -> 3
     const switchWith = array[array.length - 1 - i];
+    //array[0] -> 3
+    
     array[i] = switchWith;
+    //array[array.length - 1 - i] -> array[3-1-0]
     array[array.length - 1 - i] = currrentIteratedValue;
   }
 };
