@@ -87,10 +87,13 @@ function redactBirds(result) {
 }
 console.log(redactBirds(birds));
 // 8. Make a new array from the above array, called eBirds, that contains only birds from the original array whose names begin with the letter "E".
-function makeeBirds() {
-  
-}
 
+function makeNewArrayOfeBirds() {
+
+  const eBirds = birds.filter(letter => !letter.includes("E"));
+  return eBirds;
+}
+console.log(makeNewArrayOfeBirds());
 // const favoriteNumber1 = 1;
 // const favoriteNumber2 = 4;
 // const favoriteNumber3 = 76;
