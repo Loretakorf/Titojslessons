@@ -1,0 +1,8 @@
+.feedback img {
+    object-fit: cover;
+    height: 40px;
+    width: 40px;
+}
+.feedback p {
+    color: black;
+}
