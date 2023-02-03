@@ -3,7 +3,7 @@ import { localStorageKey} from './localStorageKey.js';
 import { getItemFromStorage}  from './getItemFromStorage.js';
 import { deleteItemFromLocalStorage } from './deleteItemFromLocalStorage.js';
 
-
+const addButton = document.querySelector("#btn");
 const orderList = document.querySelector(".order-list");
 export const constructGroceryBasket = (grocery) => {
   const productList = document.createElement("div");
@@ -32,6 +32,7 @@ export const constructGroceryBasket = (grocery) => {
         }
     });
     store.editableGroceryIndex = editableGroceryIndex;
+    addButton.textContent = 'Edit';
 })
 deleteBtn.addEventListener('click', () => {
   const groceries = getItemFromStorage(localStorageKey.groceries);
@@ -41,11 +42,12 @@ deleteBtn.addEventListener('click', () => {
     }
    })
  store.deleteGroceryIndex = deleteGroceryIndex;
+
 })
 
   editBtn.append(editIcon);
   deleteBtn.append(deleteIcon);
   iconsContainer.append(editBtn, deleteBtn);
-  productList.append(itemParagraph);
-  orderList.append(productList, iconsContainer);
+  productList.append(itemParagraph, iconsContainer);
+  orderList.append(productList);
 };

@@ -49,8 +49,6 @@ setupLocalStorage();
 
 addButton.addEventListener("click", () => {
   if (store.editableGroceryIndex >= 0) {
-    
-   addButton.textContent = 'Edit';
   } else {
     const grocery = {
       id: Math.random(),
@@ -62,10 +60,11 @@ addButton.addEventListener("click", () => {
   }
 });
 removeButton.addEventListener("click", (key, data) => {
+  addButton.textContent = "Add";
   const orderList = document.querySelector(".order-list");
   window.localStorage.clear(key, data);
   orderList.classList.add("hidden");
-  groceryInput.textContent = '';
+  groceryInput.textContent = "";
 });
 
 const groceriesFromLocalStorage = getItemFromStorage(localStorageKey.groceries);

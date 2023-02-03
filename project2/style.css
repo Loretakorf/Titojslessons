@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  padding: 0;
   font-size: 20px;
   box-sizing: border-box;
   font-family: "Courier New", Courier, monospace;
@@ -7,38 +8,33 @@
 
 body {
   background-color: azure;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
-main {
-  margin: 0 auto;
-}
+
 .container {
-  margin: 250px auto;
   display: flex;
   flex-direction: column;
   background-color: rgb(62, 52, 111);
   justify-content: center;
   align-items: center;
   gap: 20px;
-  height: 250px;
-  overflow: hidden;
-  width: 500px;
+  width: 400px;
 }
 h1 {
   color: white;
   font-size: 26px;
   font-weight: 500;
+  margin-top: 20px;
 }
-.order-cart {
+.order-cart,
+.order-list {
   display: flex;
   justify-content: space-between;
   width: 80%;
   color: white;
-}
-.order-list {
-  display: flex;
-  
-  color: white;
-  width: 80%;
 }
 #product-input {
   flex: 2;
@@ -46,16 +42,16 @@ h1 {
 .btn {
   flex: 1;
 }
-.icons {
+.grocery {
   display: flex;
-  gap: 6px;
-  flex: 1;
+  justify-content: space-between;
+  width: 100%;
 }
 .material-symbols-outlined {
   font-size: 20px;
 }
 .edit {
-  color: blue;
+  color: rgb(203, 203, 240);
   background-color: rgb(62, 52, 111);
   border: none;
 }
@@ -64,14 +60,12 @@ h1 {
   background-color: rgb(62, 52, 111);
   border: none;
 }
-.grocery {
-  display: flex;
-  flex: 3;
-}
+
 .hidden {
   display: none;
 }
 
 #remove-btn {
   width: 80%;
+  margin-bottom: 40px;
 }
