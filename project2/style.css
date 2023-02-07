@@ -29,12 +29,15 @@ h1 {
   font-weight: 500;
   margin-top: 20px;
 }
-.order-cart,
-.order-list {
+.order-cart {
   display: flex;
   justify-content: space-between;
   width: 80%;
   color: white;
+}
+.order-list {
+  display: flex;
+  flex-direction: column;
 }
 #product-input {
   flex: 2;
@@ -46,6 +49,8 @@ h1 {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  height: 40px;
+  color: white;
 }
 .material-symbols-outlined {
   font-size: 20px;

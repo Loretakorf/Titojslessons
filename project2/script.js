@@ -49,6 +49,7 @@ setupLocalStorage();
 
 addButton.addEventListener("click", () => {
   if (store.editableGroceryIndex >= 0) {
+    
   } else {
     const grocery = {
       id: Math.random(),
@@ -58,16 +59,20 @@ addButton.addEventListener("click", () => {
     const groceries = getItemFromStorage(localStorageKey.groceries);
     setItemToLocalStorage(localStorageKey.groceries, [...groceries, grocery]);
   }
+  clearInputvalue();
 });
 removeButton.addEventListener("click", (key, data) => {
   addButton.textContent = "Add";
   const orderList = document.querySelector(".order-list");
   window.localStorage.clear(key, data);
   orderList.classList.add("hidden");
-  groceryInput.textContent = "";
+  clearInputvalue();
 });
 
 const groceriesFromLocalStorage = getItemFromStorage(localStorageKey.groceries);
 groceriesFromLocalStorage.forEach = (grocery) => {
   constructGroceryBasket(grocery);
 };
+function clearInputvalue() {
+  groceryInput.value = "";
+}
